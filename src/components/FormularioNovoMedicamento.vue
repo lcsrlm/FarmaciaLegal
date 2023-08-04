@@ -6,7 +6,7 @@
         <input type="text" placeholder="Informe o nome do medicamento" v-model="nomeMedicamento">
         <input type="text" placeholder="Informe o nome do laboratório" v-model="nomeLaboratorio">
         <input type="number" placeholder="Informe o preço" v-model="preco">
-        <button @click="$emit('cadastrar')">Cadastrar</button>
+        <button @submit="$emit('cadastrar')">Cadastrar</button>
     </form>
 </div>
 </template>
