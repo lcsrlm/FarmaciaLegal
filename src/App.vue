@@ -16,11 +16,7 @@ import FormularioNovoMedicamento from "./components/FormularioNovoMedicamento.vu
 export default {
   data() {
     return {
-      listaMedicamentos: [{
-        nomeMedicamento: "",
-        nomeLaboratorio: "",
-        preco: ""
-      }]
+      listaMedicamentos: []
     }
   },
   components: {
@@ -28,8 +24,9 @@ export default {
     FormularioNovoMedicamento
   },
   methods: {
-    cadastrar() {
-      alert('usuario cadastrou')
+    cadastrar(novoMedicamento) {
+      this.listaMedicamentos.push(novoMedicamento)
+      alert('Medicamento cadastrado com sucesso')
 
     }
   }

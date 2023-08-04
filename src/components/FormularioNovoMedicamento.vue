@@ -3,9 +3,9 @@
 <div class="form-container">
     <h1>Formulário de Cadastro de medicamentos</h1>
     <form>
-        <input type="text" placeholder="Informe o nome do medicamento" v-bind="nomeMedicamento">
-        <input type="text" placeholder="Informe o nome do laboratório" v-bind="nomeLaboratorio">
-        <input type="number" placeholder="Informe o preço" v-bind="preco">
+        <input type="text" placeholder="Informe o nome do medicamento" v-model="nomeMedicamento">
+        <input type="text" placeholder="Informe o nome do laboratório" v-model="nomeLaboratorio">
+        <input type="number" placeholder="Informe o preço" v-model="preco">
         <button @click="$emit('cadastrar')">Cadastrar</button>
     </form>
 </div>
@@ -13,7 +13,26 @@
 
 <script>
 export default {
-    props: ['nomeMedicamento', 'nomeLaboratorio', 'preco']
+    data() {
+        return {
+            nomeMedicamento: "",
+            nomeLaboratorio: "",
+            preco: ""
+        }
+    },
+    methods: {
+        cadastrarMedicamento(){
+            const novoMedicamento = {
+                nomeMedicamento: this.nomeMedicamento,
+                nomeLaboratorio: this.nomeLaboratorio,
+                preco: this.preco
+            }
+            this.$emit('cadastrar', novoMedicamento)
+            this.nomeMedicamento = ""
+            this.nomeLaboratorio = ""
+            this.preco = ""
+        }
+    }
 }
 
 </script>
