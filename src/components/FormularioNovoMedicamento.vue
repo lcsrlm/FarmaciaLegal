@@ -2,11 +2,12 @@
 
 <div class="form-container">
     <h1>Formulário de Cadastro de medicamentos</h1>
+
     <form>
-        <input type="text" placeholder="Informe o nome do medicamento" v-model="nomeMedicamento">
-        <input type="text" placeholder="Informe o nome do laboratório" v-model="nomeLaboratorio">
+        <input type="text" placeholder="Informe o nome do medicamento" v-model="medicamento">
+        <input type="text" placeholder="Informe o nome do laboratório" v-model="laboratorio">
         <input type="number" placeholder="Informe o preço" v-model="preco">
-        <button @submit="$emit('cadastrar')">Cadastrar</button>
+        <button @click="$emit('cadastrar', medicamento, laboratorio, preco)">Cadastrar</button>
     </form>
 </div>
 </template>
@@ -15,29 +16,16 @@
 export default {
     data() {
         return {
-            nomeMedicamento: "",
-            nomeLaboratorio: "",
-            preco: ""
-        }
-    },
-    methods: {
-        cadastrarMedicamento(){
-            const novoMedicamento = {
-                nomeMedicamento: this.nomeMedicamento,
-                nomeLaboratorio: this.nomeLaboratorio,
-                preco: this.preco
-            }
-            this.$emit('cadastrar', novoMedicamento)
-            this.nomeMedicamento = ""
-            this.nomeLaboratorio = ""
-            this.preco = ""
+            medicamento: "",
+            laboratorio: "",
+            preco: 0
         }
     }
-}
+    }
 
 </script>
 
-<style>
+<style scoped>
 
 input[type=number]::-webkit-inner-spin-button { 
     -webkit-appearance: none;   
@@ -57,7 +45,7 @@ input[type=number] {
     font-size: 16pt;
 }
 
-.form-container form{
+.form-container form {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
