@@ -7,7 +7,7 @@
     <p>Preço: {{ preco }}</p>
     <p>Favorito: {{ favorito ? 'Sim' : 'Não' }}</p>
     <button @click="$emit('favoritar', id)">Favoritar</button>
-    <button @click="removerMedicamento">Excluir</button>
+    <button class="remove-button" @click="removerMedicamento">Remover</button>
    
   </div>
 </template>
@@ -31,5 +31,14 @@ export default {
   background-color: transparent;
   gap: 8px;
 }
-  
+.remove-button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #ff0000; 
+  cursor: pointer;
+  font-size: small;
+  text-decoration: underline;
+}
+
 </style>
