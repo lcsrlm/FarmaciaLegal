@@ -6,9 +6,12 @@
     <FormularioNovoMedicamento @cadastrar="AdicionarMedicamento">
 
     </FormularioNovoMedicamento>
-    <CardMedicamento v-if="!!listaMedicamentos" v-for="medicamento in listaMedicamentos" :key="medicamento.id"
-      @favoritar="FavoritarMedicamento" :nome="medicamento.nome" :laboratorio="medicamento.laboratorio"
+    <div class="card-container">
+      <CardMedicamento v-if="!!listaMedicamentos" v-for="medicamento in listaMedicamentos" :key="medicamento.id"
+      @favoritar="FavoritarMedicamento" @remover="RemoverMedicamento" :nome="medicamento.nome" :laboratorio="medicamento.laboratorio"
       :preco="medicamento.preco" :id="medicamento.id" :favorito="medicamento.favorito"/>
+    </div>
+
   </div>
 </template>
 
@@ -52,11 +55,22 @@ export default {
         }
         return item
       })
-    }
+    },
+    RemoverMedicamento(id) {
+    this.listaMedicamentos = this.listaMedicamentos.filter(medicamento => medicamento.id !== id)
+  }
   }
 }
 
 
 </script>
 
-<style></style>
+<style>
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+
+</style>

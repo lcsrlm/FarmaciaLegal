@@ -7,12 +7,18 @@
     <p>Preço: {{ preco }}</p>
     <p>Favorito: {{ favorito ? 'Sim' : 'Não' }}</p>
     <button @click="$emit('favoritar', id)">Favoritar</button>
+    <button @click="removerMedicamento">Excluir</button>
    
   </div>
 </template>
 <script>
 export default {
-  props: ['nome', 'laboratorio', 'preco', 'favorito', 'id']
+  props: ['nome', 'laboratorio', 'preco', 'favorito', 'id'],
+  methods: {
+    removerMedicamento() {
+      this.$emit('remover', this.id)
+    }
+  }
 }
 </script>
 <style scoped>
