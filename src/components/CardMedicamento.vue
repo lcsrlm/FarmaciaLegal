@@ -6,7 +6,7 @@
     <p>Laboratório: {{ laboratorio }}</p>
     <p>Preço: {{ preco }}</p>
     <p>Favorito: {{ favorito ? 'Sim' : 'Não' }}</p>
-    <button @click="$emit('favoritar', id)">Favoritar</button>
+    <button class="fav-button" @click="$emit('favoritar', id)">{{ favorito ? 'Remover dos favoritos' : 'Adicionar aos favoritos' }}</button>
     <button class="remove-button" @click="removerMedicamento">Remover</button>
    
   </div>
@@ -39,6 +39,10 @@ export default {
   cursor: pointer;
   font-size: small;
   text-decoration: underline;
+}
+
+.fav-button {
+  width: 10vw;
 }
 
 </style>
