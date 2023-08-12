@@ -3,11 +3,11 @@
 <div class="form-container">
     <h1>Formulário de Cadastro de medicamentos</h1>
 
-    <form>
+    <form @submit.prevent="$emit('cadastrar', medicamento, laboratorio, preco)">
         <input type="text" placeholder="Informe o nome do medicamento" v-model="medicamento">
         <input type="text" placeholder="Informe o nome do laboratório" v-model="laboratorio">
         <input type="number" placeholder="Informe o preço" v-model="preco">
-        <button @click="$emit('cadastrar', medicamento, laboratorio, preco)">Cadastrar</button>
+        <button>Cadastrar</button>
     </form>
 </div>
 </template>
@@ -18,7 +18,7 @@ export default {
         return {
             medicamento: "",
             laboratorio: "",
-            preco: 0
+            preco: "",
         }
     }
     }

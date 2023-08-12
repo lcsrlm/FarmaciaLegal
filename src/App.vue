@@ -6,16 +6,9 @@
     <FormularioNovoMedicamento @cadastrar="AdicionarMedicamento">
 
     </FormularioNovoMedicamento>
-    <CardMedicamento 
-      v-if="!!listaMedicamentos"
-      v-for="medicamento in listaMedicamentos"
-      :key="medicamento.id"
-      @favoritar="FavoritarMedicamento" 
-      :nome="medicamento.nome" 
-      :laboratorio="medicamento.laboratorio" 
-      :preco="medicamento.preco" 
-      :id="medicamento.id" 
-    />
+    <CardMedicamento v-if="!!listaMedicamentos" v-for="medicamento in listaMedicamentos" :key="medicamento.id"
+      @favoritar="FavoritarMedicamento" :nome="medicamento.nome" :laboratorio="medicamento.laboratorio"
+      :preco="medicamento.preco" :id="medicamento.id" :favorito="medicamento.favorito"/>
   </div>
 </template>
 
@@ -38,23 +31,32 @@ export default {
 
   methods: {
     AdicionarMedicamento(nome, laboratorio, preco) {
-      event.preventDefault()
-      if(nome === "" || laboratorio === "" || preco === 0){
+
+      if (nome === "" || laboratorio === "" || preco === 0) {
         alert("Preencha todos os dados")
         return
       }
-      const novoMedicamento= {
+      const novoMedicamento = {
         nome: nome,
         laboratorio: laboratorio,
         preco: preco,
         favorito: false,
-        id: this.listaMedicamentos.length +1
+        id: this.listaMedicamentos.length + 1
       }
       this.listaMedicamentos.push(novoMedicamento)
+    },
+    FavoritarMedicamento(id) {
+      this.listaMedicamentos = this.listaMedicamentos.map(item => {
+        if (item.id == id) {
+          item.favorito = !item.favorito
+        }
+        return item
+      })
     }
   }
 }
+
+
 </script>
 
-<style>
-</style>
+<style></style>
