@@ -1,11 +1,10 @@
-<template>
+  <template>
   <div class="card">
     <p v-if="favorito"></p>
     <img :width="120" src="https://dmvfarma.vtexassets.com/arquivos/ids/196865/caixa-medicamento-2021.png?v=637695586068000000" alt="Imagem do medicamento" />
     <p>Nome: {{ nome }}</p>
     <p>Laboratório: {{ laboratorio }}</p>
     <p>Preço: {{ preco }}</p>
-    <p>Favorito: {{ favorito ? 'Sim' : 'Não' }}</p>
     <button class="fav-button" @click="$emit('favoritar', id)">{{ favorito ? 'Remover dos favoritos' : 'Adicionar aos favoritos' }}</button>
     <button class="remove-button" @click="removerMedicamento">Remover</button>
    
@@ -30,6 +29,8 @@ export default {
   margin: 1em;
   background-color: transparent;
   gap: 8px;
+
+  font-family: sans-serif;
 }
 .remove-button {
   background: none;
